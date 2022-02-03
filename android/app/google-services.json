@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "1088794682667",
+    "project_id": "sample-voice-project-7dc08",
+    "storage_bucket": "sample-voice-project-7dc08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088794682667:android:229c473bf3f0f4b709116e",
+        "android_client_info": {
+          "package_name": "com.sampleproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk9Ht8mgk42VdQXY04ew8U923dhnlDi_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088794682667:android:6b6d9d0fb979a25009116e",
+        "android_client_info": {
+          "package_name": "com.twilio.examplecustomaudiodevice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk9Ht8mgk42VdQXY04ew8U923dhnlDi_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088794682667:android:05c3d74d7599182e09116e",
+        "android_client_info": {
+          "package_name": "com.twilio.voice.quickstart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk9Ht8mgk42VdQXY04ew8U923dhnlDi_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
