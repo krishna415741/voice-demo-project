@@ -27,36 +27,35 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import NativeButton from './NativeButton';
+import PhoneScreen from './PhoneScreen';
 import { DeviceEventEmitter } from 'react-native';
-
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import firebase from '@react-native-firebase/app';
 
 
+// Your secondary Firebase project credentials...
+
+
+const initializaFireBase = async () => {
+  const credentials = {
+    clientId: '1088794682667-4kl3rdc3iidv1gsnqgvuj6nreq3d2dn3.apps.googleusercontent.com',
+    appId: 'APcbbbbc534c9fe8b089e1f4d397aa253a',
+    apiKey: 'adcc84d5327e43790c63988aa856ef06',
+    databaseURL: '',
+    storageBucket: 'sample-voice-project-7dc08.appspot.com',
+    messagingSenderId: '',
+    projectId: 'sample-voice-project-7dc08',
+  };
+  
+  const config = {
+    name: 'DEMO APP',
+  };
+  try {
+  await firebase.app();
+  console.log(firebase.app());
+  } catch (e) {
+    console.log(e);
+  }
+}
 const requestCameraPermission = async () => {
   try {
     const granted = await PermissionsAndroid.request(
@@ -84,6 +83,7 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   React.useEffect(() =>{
+    initializaFireBase();
     requestCameraPermission();
     // Twilio.initWithToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2Y3YzliOWRiODU5NTM2OTRmNjEzYzBmOTc3YWQ0YmNjLTE2NDMwMzIyMDciLCJncmFudHMiOnsiaWRlbnRpdHkiOiJ1c2VyIiwidm9pY2UiOnsib3V0Z29pbmciOnsiYXBwbGljYXRpb25fc2lkIjoiQVBjYmJiYmM1MzRjOWZlOGIwODllMWY0ZDM5N2FhMjUzYSJ9LCJwdXNoX2NyZWRlbnRpYWxfc2lkIjoiQ1I4ZGNiMmFhY2E3Nzk4NmEyOGY4MWQ2ZjYzODZjNGZiMyJ9fSwiaWF0IjoxNjQzMDMyMjA3LCJleHAiOjE2NDMwMzU4MDcsImlzcyI6IlNLZjdjOWI5ZGI4NTk1MzY5NGY2MTNjMGY5NzdhZDRiY2MiLCJzdWIiOiJBQzAwNjUxZDg0YjIzMDczZjM5ZmE3NjdkZWVlODNlYmIyIn0.kpauyYwks1PDZPfzUbgPtyeBaKA-Z7oswnFx2opLiTI');
   // Twilio.addEventListener('deviceDidStartListening', this._deviceDidStartListening);
@@ -133,16 +133,7 @@ const App = () => {
   return (
     <SafeAreaView style={{flex:1}}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {/* <ScrollView > */}
-        {/* <Header /> */}
-        {/* <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            flex:1
-          }}>*/}
-            <NativeButton endCall={endCall} /> 
-        {/* </View> */}
-      {/* </ScrollView> */}
+            <PhoneScreen endCall={endCall} /> 
     </SafeAreaView>
   );
 };

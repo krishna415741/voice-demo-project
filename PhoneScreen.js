@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NativeModules, Button, Text, View, TextInput, TouchableOpacity, NativeEventEmitter } from 'react-native';
 const { TwilioModule } = NativeModules;
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
 
-const NewModuleButton = ({endCall}) => {
+const PhoneScreen = ({endCall}) => {
   const [callStarted, setIsCallStarted] = useState(false);
   const [value, setValue] = useState(null);
   const [timerStart, setTimerStart] = useState(false);
@@ -23,13 +23,7 @@ const NewModuleButton = ({endCall}) => {
 
     });
 
-    const eventEmitter = new NativeEventEmitter(TwilioModule);
-    eventEmitter.addListener('CallEnded', (event) => {
-      console.log(event.eventProperty);
-      // alert("bye bye");
-      resetStopWatch();
-      setIsCallStarted(false); // "someValue"
-   });
+   
 };
 
 const rejectCalls = () => {
@@ -63,6 +57,29 @@ const resetStopWatch = () => {
 const getFormattedTime = (time) => {
 
 }
+
+useEffect(()=>{
+  const eventEmitter = new NativeEventEmitter(TwilioModule);
+  eventEmitter.addListener('CallEnded', (event) => {
+    console.log(event);
+    alert(JSON.stringify(event));
+    resetStopWatch();
+    setIsCallStarted(false); // "someValue"
+ });
+ eventEmitter.addListener('CallStarted', (event) => {
+  console.log(event);
+  alert(JSON.stringify(event));
+  resetStopWatch();
+  setIsCallStarted(false); // "someValue"
+});
+eventEmitter.addListener('CallMuted', (event) => {
+  console.log(event);
+  alert(JSON.stringify(event));
+  resetStopWatch();
+  setIsCallStarted(false); // "someValue"
+});
+
+})
 
   return (
       <View style={{flex:1, backgroundColor:'white', display:'flex'}}>

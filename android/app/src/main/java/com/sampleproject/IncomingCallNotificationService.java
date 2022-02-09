@@ -39,6 +39,7 @@ public class IncomingCallNotificationService extends Service {
                     break;
                 case Constants.ACTION_ACCEPT:
                     accept(callInvite, notificationId);
+
                     break;
                 case Constants.ACTION_REJECT:
                     reject(callInvite);
@@ -59,7 +60,7 @@ public class IncomingCallNotificationService extends Service {
     }
 
     private Notification createNotification(CallInvite callInvite, int notificationId, int channelImportance) {
-        Intent intent = new Intent(this, CustomDeviceActivity.class);
+        Intent intent = new Intent(this, TwilioModule.class);
         intent.setAction(Constants.ACTION_INCOMING_CALL_NOTIFICATION);
         intent.putExtra(Constants.INCOMING_CALL_NOTIFICATION_ID, notificationId);
         intent.putExtra(Constants.INCOMING_CALL_INVITE, callInvite);
@@ -156,13 +157,14 @@ public class IncomingCallNotificationService extends Service {
 
     private void accept(CallInvite callInvite, int notificationId) {
         endForeground();
-        Intent activeCallIntent = new Intent(this, CustomDeviceActivity.class);
+        Intent activeCallIntent = new Intent(this, TwilioModule.class);
         activeCallIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         activeCallIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activeCallIntent.putExtra(Constants.INCOMING_CALL_INVITE, callInvite);
         activeCallIntent.putExtra(Constants.INCOMING_CALL_NOTIFICATION_ID, notificationId);
         activeCallIntent.setAction(Constants.ACTION_ACCEPT);
-        startActivity(activeCallIntent);
+
+//        startActivity(activeCallIntent);
     }
 
     private void reject(CallInvite callInvite) {
@@ -204,13 +206,13 @@ public class IncomingCallNotificationService extends Service {
         if (Build.VERSION.SDK_INT >= 29 && !isAppVisible()) {
             return;
         }
-        Intent intent = new Intent(this, CustomDeviceActivity.class);
+        Intent intent = new Intent(this, TwilioModule.class);
         intent.setAction(Constants.ACTION_INCOMING_CALL);
         intent.putExtra(Constants.INCOMING_CALL_NOTIFICATION_ID, notificationId);
         intent.putExtra(Constants.INCOMING_CALL_INVITE, callInvite);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startActivity(intent);
+//        this.startActivity(intent);
     }
 
     private boolean isAppVisible() {
